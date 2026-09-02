@@ -305,5 +305,5 @@ npm run allure:open
 ---
 
 <p align="center">
-  Crafted with ❤️ by the QA & SDET Engineering Team
+  Crafted with ❤️ by the Sayan Koley
 </p>
