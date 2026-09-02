@@ -1,7 +1,7 @@
 # 🏥 The Pharmacy Place (TPP) — End-to-End Test Automation Framework
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/microsoft/playwright/main/assets/playwright-logo.png" width="90" height="90" alt="Playwright Logo"/>
+  <img src="https://playwright.dev/img/playwright-logo.svg" width="90" height="90" alt="Playwright Logo"/>
   <br/>
   <strong>Production-Grade, Scalable Playwright TypeScript Test Automation Architecture</strong>
   <br/>
@@ -81,34 +81,9 @@ flowchart LR
 
 ## 🏛️ Framework Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      Playwright Test Runner                 │
-└──────────────┬───────────────────────────────┬──────────────┘
-               │                               │
-       ┌───────▼────────┐             ┌────────▼────────┐
-       │ Live Sandbox   │             │ API Mock Engine │
-       │ (MOCK_API=0)   │             │ (MOCK_API=1)    │
-       └───────┬────────┘             └────────┬────────┘
-               │                               │
- ┌─────────────▼───────────────────────────────▼─────────────┐
- │                      Page Object Models                    │
- │ ───────────────────────────────────────────────────────── │
- │  • ProductPage (PatientStatus, DosageComponent, Cart)      │
- │  • CheckoutPage (Shipping, Payment, Frame isolation)       │
- │  • ThankYouPage (DOM validation, Order ID logging)         │
- │  • QuestionnairePage (24-Step Medical Assessment Engine)   │
- └─────────────────────────────┬─────────────────────────────┘
-                               │
- ┌─────────────────────────────▼─────────────────────────────┐
- │                   Artifacts & Reporting                   │
- │ ───────────────────────────────────────────────────────── │
- │  • Playwright HTML Report & Blob Shard Aggregator         │
- │  • Allure Test Framework Reports                          │
- │  • Full-Page Screenshots, Failure Videos & Network Traces │
- │  • Structured Pino Logs & Order ID Console Summaries       │
- └───────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="docs/assets/framework-architecture.svg" alt="The Pharmacy Place Framework Architecture" width="100%"/>
+</p>
 
 ---
 

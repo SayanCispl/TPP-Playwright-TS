@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ead33" />
+      <stop offset="50%" stop-color="#3178c6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <linearGradient id="suiteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="liveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+
+    <linearGradient id="mockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="pomGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="reportGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065" />
+      <stop offset="100%" stop-color="#170638" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="dropGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 800; font-size: 26px; fill: #ffffff; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 500; font-size: 14px; fill: #94a3b8; }
+    .layer-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1.2px; fill: #38bdf8; }
+    .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 700; font-size: 14px; fill: #f8fafc; }
+    .card-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 400; font-size: 12px; fill: #94a3b8; }
+    .tag { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 600; font-size: 11px; fill: #e2e8f0; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="680" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Header Section -->
+  <rect x="0" y="0" width="1200" height="6" fill="url(#headerGrad)" />
+  <text x="50" y="52" class="title">🏥 The Pharmacy Place — Test Automation Architecture</text>
+  <text x="50" y="76" class="subtitle">Scalable Playwright TypeScript Framework with Page Object Model, Dual API Modes &amp; CI Sharding</text>
+
+  <!-- ==================== LAYER 1: TEST SUITES ==================== -->
+  <g transform="translate(50, 105)">
+    <!-- Group Container -->
+    <rect width="1100" height="95" rx="12" fill="url(#suiteGrad)" stroke="#334155" stroke-width="1.5" filter="url(#dropGlow)" />
+    <text x="24" y="28" class="layer-title">Layer 1: Test Suites &amp; Orchestration</text>
+    
+    <!-- Card 1: Smoke -->
+    <g transform="translate(24, 40)">
+      <rect width="250" height="42" rx="8" fill="#0f172a" stroke="#2ead33" stroke-width="1.5" />
+      <text x="16" y="24" class="card-title">🔥 Smoke Tests</text>
+      <text x="16" y="36" class="card-desc">Checkout + 24-Step Assessment</text>
+    </g>
+
+    <!-- Card 2: Regression -->
+    <g transform="translate(294, 40)">
+      <rect width="250" height="42" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+      <text x="16" y="24" class="card-title">🔄 Regression Suite</text>
+      <text x="16" y="36" class="card-desc">Product variants &amp; edge cases</text>
+    </g>
+
+    <!-- Card 3: Multi-Browser -->
+    <g transform="translate(564, 40)">
+      <rect width="250" height="42" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <text x="16" y="24" class="card-title">🌐 Multi-Browser Matrix</text>
+      <text x="16" y="36" class="card-desc">Chromium, Firefox, WebKit</text>
+    </g>
+
+    <!-- Card 4: CI Sharding -->
+    <g transform="translate(834, 40)">
+      <rect width="242" height="42" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="16" y="24" class="card-title">⚡ GitHub Actions Shards</text>
+      <text x="16" y="36" class="card-desc">4-Way parallel test runners</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 2: EXECUTION MODES ==================== -->
+  <g transform="translate(50, 220)">
+    <!-- Live Mode Card -->
+    <g transform="translate(0, 0)">
+      <rect width="535" height="85" rx="12" fill="url(#liveGrad)" stroke="#10b981" stroke-width="1.5" filter="url(#dropGlow)" />
+      <text x="24" y="32" class="card-title" font-size="16px" fill="#34d399">🟢 Live Sandbox Mode (MOCK_API=false)</text>
+      <text x="24" y="54" class="card-desc" fill="#a7f3d0">Hits live Webflow site, live API endpoints, real credit card validation &amp; S3 uploads.</text>
+      <text x="24" y="70" class="card-desc" fill="#6ee7b7">Supports Headed &amp; Headless runs with static test accounts.</text>
+    </g>
+
+    <!-- Mock Mode Card -->
+    <g transform="translate(565, 0)">
+      <rect width="535" height="85" rx="12" fill="url(#mockGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#dropGlow)" />
+      <text x="24" y="32" class="card-title" font-size="16px" fill="#7dd3fc">🔵 Deterministic Mock Mode (MOCK_API=true)</text>
+      <text x="24" y="54" class="card-desc" fill="#bae6fd">Intercepts checkout and questionnaire routes for instant, zero-latency CI execution.</text>
+      <text x="24" y="70" class="card-desc" fill="#7dd3fc">Ensures 100% deterministic test execution on GitHub Actions.</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 3: PAGE OBJECT MODELS ==================== -->
+  <g transform="translate(50, 325)">
+    <rect width="1100" height="195" rx="12" fill="url(#pomGrad)" stroke="#334155" stroke-width="1.5" filter="url(#dropGlow)" />
+    <text x="24" y="28" class="layer-title">Layer 3: Page Object Model (POM) &amp; Component Architecture</text>
+
+    <!-- POM 1: ProductPage -->
+    <g transform="translate(24, 45)">
+      <rect width="250" height="135" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+      <text x="16" y="28" class="card-title" fill="#60a5fa">📦 ProductPage</text>
+      <text x="16" y="52" class="card-desc">• DosageComponent</text>
+      <text x="16" y="72" class="card-desc">• PatientStatusComponent</text>
+      <text x="16" y="92" class="card-desc">• CartDrawerComponent</text>
+      <text x="16" y="112" class="card-desc">• Dynamic Add-To-Cart</text>
+    </g>
+
+    <!-- POM 2: CheckoutPage -->
+    <g transform="translate(294, 45)">
+      <rect width="250" height="135" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+      <text x="16" y="28" class="card-title" fill="#a78bfa">💳 CheckoutPage</text>
+      <text x="16" y="52" class="card-desc">• Shipping Information</text>
+      <text x="16" y="72" class="card-desc">• Hosted Stripe Frames</text>
+      <text x="16" y="92" class="card-desc">• Dynamic State Select</text>
+      <text x="16" y="112" class="card-desc">• cc_test sandbox param</text>
+    </g>
+
+    <!-- POM 3: ThankYouPage -->
+    <g transform="translate(564, 45)">
+      <rect width="250" height="135" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+      <text x="16" y="28" class="card-title" fill="#34d399">🎉 ThankYouPage</text>
+      <text x="16" y="52" class="card-desc">• HTML DOM Validation</text>
+      <text x="16" y="72" class="card-desc">• Order ID Capture</text>
+      <text x="16" y="92" class="card-desc">• Terminal Banner Output</text>
+      <text x="16" y="112" class="card-desc">• Start Assessment CTA</text>
+    </g>
+
+    <!-- POM 4: QuestionnairePage -->
+    <g transform="translate(834, 45)">
+      <rect width="242" height="135" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5" />
+      <text x="16" y="28" class="card-title" fill="#fb7185">🩺 QuestionnairePage</text>
+      <text x="16" y="52" class="card-desc">• 24-Step Dynamic Engine</text>
+      <text x="16" y="72" class="card-desc">• DOB / BMI / Vital Signs</text>
+      <text x="16" y="92" class="card-desc">• Legal Consent Signature</text>
+      <text x="16" y="112" class="card-desc">• Video &amp; Photo ID Upload</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 4: REPORTING & EVIDENCE ==================== -->
+  <g transform="translate(50, 540)">
+    <rect width="1100" height="95" rx="12" fill="url(#reportGrad)" stroke="#7c3aed" stroke-width="1.5" filter="url(#dropGlow)" />
+    <text x="24" y="28" class="layer-title" fill="#c084fc">Layer 4: Unified Evidence &amp; Test Reporting</text>
+
+    <!-- Item 1 -->
+    <g transform="translate(24, 40)">
+      <rect width="250" height="42" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+      <text x="16" y="26" class="card-title">📊 Playwright HTML Report</text>
+    </g>
+
+    <!-- Item 2 -->
+    <g transform="translate(294, 40)">
+      <rect width="250" height="42" rx="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1" />
+      <text x="16" y="26" class="card-title">📈 Allure 2 Dashboard</text>
+    </g>
+
+    <!-- Item 3 -->
+    <g transform="translate(564, 40)">
+      <rect width="250" height="42" rx="8" fill="#1e1b4b" stroke="#ec4899" stroke-width="1" />
+      <text x="16" y="26" class="card-title">📸 Full-Page Screenshots</text>
+    </g>
+
+    <!-- Item 4 -->
+    <g transform="translate(834, 40)">
+      <rect width="242" height="42" rx="8" fill="#1e1b4b" stroke="#f43f5e" stroke-width="1" />
+      <text x="16" y="26" class="card-title">🎥 Traces &amp; Failure Videos</text>
+    </g>
+  </g>
+</svg>
