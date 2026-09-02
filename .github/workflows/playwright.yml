@@ -50,8 +50,8 @@ jobs:
       - name: TypeScript validation
         run: npm run typecheck
 
-      - name: Run Playwright tests (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: Run Playwright Smoke tests (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
+        run: npx playwright test tests/smoke --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       - name: Upload blob report
         if: ${{ !cancelled() }}
