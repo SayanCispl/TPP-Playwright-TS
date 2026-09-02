@@ -561,6 +561,7 @@ export class CheckoutPage extends BasePage {
      * call and then dispatches a single 'input' event, which is what Stripe
      * actually listens for to validate and format the number.
      */
+    await this.cardNumberInput.click();
     await this.cardNumberInput.fill(data.cardNumber);
 
     // ----------------------------------------------------------
@@ -574,6 +575,7 @@ export class CheckoutPage extends BasePage {
       timeout: 15000
     });
 
+    await this.expiryInput.click();
     await this.expiryInput.fill(data.expirationDate);
 
     // ----------------------------------------------------------
@@ -587,7 +589,12 @@ export class CheckoutPage extends BasePage {
       timeout: 15000
     });
 
+    await this.securityCodeInput.click();
     await this.securityCodeInput.fill(data.cvv);
+    await this.securityCodeInput.press('Tab').catch(() => {});
+
+    // Allow Stripe to process validation
+    await this.page.waitForTimeout(2000);
   }
 
   // ============================================================
