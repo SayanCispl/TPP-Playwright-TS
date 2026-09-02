@@ -1,0 +1,15 @@
+{
+  "browser": "chrome",
+  "headless": false,
+  "viewport": { "width": 1440, "height": 1000 },
+  "ignoreHTTPSErrors": true,
+  "codegen": "typescript",
+  "outputDir": "./reports/mcp-sessions",
+  "saveSession": true,
+  "consoleLevel": "warning",
+  "timeouts": {
+    "action": 20000,
+    "navigation": 30000,
+    "settle": 500
+  }
+}

@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment configurations
+.env
+.env.*
+!.env.example
+
+# Playwright default reports and artifacts
+playwright-report/
+test-results/
+blob-report/
+
+# Custom framework reports and artifacts
+reports/allure-results/
+reports/allure-report/
+reports/html/
+reports/screenshots/
+reports/videos/
+reports/traces/
+reports/logs/
+reports/test-results/
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+coverage/

@@ -1,0 +1,48 @@
+name: Nightly Regression
+
+on:
+  schedule:
+    - cron: "30 18 * * *"
+  workflow_dispatch:
+
+jobs:
+  regression:
+    timeout-minutes: 45
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run regression
+        run: npx playwright test tests/regression tests/smoke --project=${{ matrix.browser }}
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          TEST_FIRST_NAME: Test
+          TEST_LAST_NAME: QA
+          TEST_SHIPPING_ADDRESS: Test
+          TEST_CITY: Test
+          TEST_STATE: New York
+          TEST_ZIP: 10002
+          TEST_PHONE: 2125550123
+          TEST_CARD_NUMBER: ${{ secrets.TEST_CARD_NUMBER }}
+          TEST_CARD_EXPIRY: ${{ secrets.TEST_CARD_EXPIRY }}
+          TEST_CARD_CVV: ${{ secrets.TEST_CARD_CVV }}
+
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-${{ matrix.browser }}
+          path: reports/
+          retention-days: 14

@@ -1,0 +1,41 @@
+{
+  "name": "pharmacy-playwright-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scalable Playwright TypeScript POM framework for The Pharmacy Place.",
+  "scripts": {
+    "test": "playwright test",
+    "test:mocked": "MOCK_API=true playwright test",
+    "test:live": "MOCK_API=false playwright test",
+    "test:smoke": "playwright test tests/smoke",
+    "test:regression": "playwright test tests/regression",
+    "test:edge": "playwright test tests/edge",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:failed": "playwright test --last-failed",
+    "test:ui": "playwright test --ui",
+    "test:codegen": "playwright codegen https://the-pharmacy-place.webflow.io",
+    "test:trace-viewer": "playwright show-trace",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
+    "allure:open": "allure open reports/allure-report",
+    "clean": "node scripts/clean.js",
+    "typecheck": "tsc --noEmit",
+    "mcp:server": "node node_modules/@playwright/mcp/cli.js --config mcp.config.json --port 3001",
+    "mcp:codegen": "node node_modules/@playwright/mcp/cli.js --config mcp.config.json --codegen typescript --port 3001",
+    "mcp:headless": "node node_modules/@playwright/mcp/cli.js --config mcp.config.json --headless --port 3001"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.79",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "allure-playwright": "^3.3.0",
+    "dotenv": "^17.2.1",
+    "pino": "^9.9.0",
+    "pino-pretty": "^13.1.1",
+    "typescript": "^5.9.2"
+  }
+}

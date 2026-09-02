@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "node",
+      "args": [
+        "./node_modules/@playwright/mcp/cli.js",
+        "--browser", "chrome",
+        "--codegen", "typescript",
+        "--port", "3001",
+        "--ignore-https-errors",
+        "--viewport-size", "1440x1000",
+        "--timeout-action", "20000",
+        "--timeout-navigation", "30000"
+      ],
+      "env": {
+        "BASE_URL": "https://the-pharmacy-place.webflow.io"
+      }
+    }
+  }
+}
