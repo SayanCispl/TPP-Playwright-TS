@@ -166,14 +166,14 @@ cp .env.example .env
 
 Edit `.env` to configure tests without touching any test code:
 
-| Variable | Description | Default |
+| Variable | Description | Default / Example |
 | :--- | :--- | :--- |
 | `BASE_URL` | Application root URL | `https://the-pharmacy-place.webflow.io` |
 | `CHECKOUT_TEST_PARAM` | Query-string parameter for sandbox testing | `sandbox` |
 | `MOCK_API` | Set `false` for live server, `true` for mocked network API | `true` |
-| `TEST_EMAIL` | Static test email used across checkout and assessment | `sayan.koley@codeclouds.co.in` |
-| `VIDEO_PATH` | Path to video file for questionnaire upload (Q22) | `fixtures/test_video.mp4` |
-| `PHOTO_PATH` | Path to photo file for ID verification upload (Q23) | `fixtures/test_photo.png` |
+| `TEST_EMAIL` | Test email used across checkout and assessment | `your-email@example.com` |
+| `VIDEO_PATH` | Path to video file for questionnaire selfie upload | `fixtures/test_video.mp4` |
+| `PHOTO_PATH` | Path to photo file for ID verification upload | `fixtures/test_photo.png` |
 | `WORKERS` | Parallel worker count (leave empty for automatic) | _auto_ |
 
 ---
@@ -280,5 +280,5 @@ npm run allure:open
 ---
 
 <p align="center">
-  Crafted with ❤️ by the Sayan Koley
+  Crafted with ❤️ by Sayan Koley
 </p>
