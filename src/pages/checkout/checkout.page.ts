@@ -743,49 +743,43 @@ export class CheckoutPage extends BasePage {
 
     await this.completeCheckoutButton.click();
 
-    // ── Step 1: Handle the returning-patient modal ───────────────────────
-    //
-    // After clicking Complete Checkout, the site may show a "Looks like
-    // we've already met" modal for returning patient email addresses.
-    // We use waitForSelector with a short timeout instead of a fixed sleep:
-    // - If the modal becomes visible within 3 s → dismiss it.
-    // - If it never appears (new patient email) → swallow the timeout and
-    //   continue. No hardcoded sleep is used.
-    await this.page
-      .waitForSelector('#confirm-modal', { state: 'visible', timeout: 3000 })
-      .then(() => this.dismissReturningPatientModal())
-      .catch(() => {
-        logStep('Returning-patient modal did not appear — continuing as new patient');
-      });
+    // ── Resiliently handle returning-patient modal & navigation up to 45s ─────
+    const startTime = Date.now();
+    const maxWaitMs = 45000;
 
-    // ── Step 2: Wait for navigation away from /checkout ─────────────────
-    //
-    // After clicking Okay (or if no modal appeared), the checkout should
-    // process the payment and redirect to /order-confirmation or similar.
-    const navigationOutcome = await this.page
-      .waitForURL((url) => !url.pathname.includes('/checkout'), {
-        timeout: 30000,
-      })
-      .then(() => 'navigated' as const)
-      .catch(() => 'timeout' as const);
+    while (Date.now() - startTime < maxWaitMs) {
+      const currentUrl = this.page.url();
+      if (!currentUrl.includes('/checkout')) {
+        logStep('Checkout navigation successful', { url: currentUrl });
+        return;
+      }
 
-    if (navigationOutcome === 'timeout') {
-      // ── Checkout did NOT navigate — collect and log all DOM errors ────
-      logStep('Complete Checkout did not navigate — collecting page errors', {
-        url: this.page.url(),
-      });
+      // Check for returning-patient modal ("Looks like we've already met")
+      const modal = this.page.locator('#confirm-modal, .modal-overlay.show, [id*="confirm-modal"]');
+      const isModalVisible = await modal.isVisible().catch(() => false);
 
-      await this.captureCheckoutErrors();
+      if (isModalVisible) {
+        logStep('Returning-patient modal detected — clicking Okay to dismiss');
+        const okayBtn = this.page.locator('#confirm-btn, button:has-text("Okay"), button:has-text("OK")').first();
+        if (await okayBtn.isVisible().catch(() => false)) {
+          await okayBtn.click().catch(() => {});
+          logStep('Clicked Okay on returning-patient modal');
+          await this.page.waitForTimeout(1000);
+        }
+      }
 
-      throw new Error(
-        `[CheckoutPage] completeCheckout() — page did not navigate away from ${
-          this.page.url()
-        }. Check [CHECKOUT ERROR] lines above for the visible error message.`
-      );
+      await this.page.waitForTimeout(1000);
     }
 
-    logStep('Checkout navigation successful', {
+    // If still on /checkout after 45s, collect errors and throw
+    logStep('Complete Checkout did not navigate — collecting page errors', {
       url: this.page.url(),
     });
+
+    await this.captureCheckoutErrors();
+
+    throw new Error(
+      `[CheckoutPage] completeCheckout() — page did not navigate away from ${this.page.url()} within 45s. Check [CHECKOUT ERROR] lines above for the visible error message.`
+    );
   }
 }

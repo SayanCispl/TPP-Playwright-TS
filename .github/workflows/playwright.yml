@@ -20,16 +20,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: [1, 2]
+        shardTotal: [2]
     env:
       CI: 'true'
-      MOCK_API: 'true'
+      MOCK_API: 'false'
       TEST_EMAIL: 'sayan.koley@codeclouds.co.in'
       BASE_URL: 'https://the-pharmacy-place.webflow.io'
       CHECKOUT_TEST_PARAM: 'sandbox'
       VIDEO_PATH: 'fixtures/test_video.mp4'
       PHOTO_PATH: 'fixtures/test_photo.png'
+      WORKERS: '1'
 
     steps:
       - name: Checkout repository
@@ -44,14 +45,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright browsers & system dependencies
+        run: npx playwright install --with-deps chromium
 
       - name: TypeScript validation
         run: npm run typecheck
 
-      - name: Run Playwright Smoke tests (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-        run: npx playwright test tests/smoke --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: Run Playwright Smoke tests in Headed Mode with Xvfb (Shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" npx playwright test tests/smoke --project=chromium --headed --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       - name: Upload blob report
         if: ${{ !cancelled() }}
